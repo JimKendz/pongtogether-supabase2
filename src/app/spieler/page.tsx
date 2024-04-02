@@ -61,7 +61,7 @@ import {
 import MobileNavDrawer from "@/components/MobileNavDrawer"
 import UserMenu from "@/components/UserMenu"
 
-export default function Dashboard() {
+export default function Spieler() {
     return (
         <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -74,15 +74,15 @@ export default function Dashboard() {
                                     <Link href="#">Dashboard</Link>
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-                            <BreadcrumbSeparator /> */}
+                            <BreadcrumbSeparator />
                             <BreadcrumbItem>
                                 <BreadcrumbLink asChild>
                                     <Link href="/turniere">Turniere</Link>
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-                            <BreadcrumbSeparator />
+                            <BreadcrumbSeparator /> */}
                             <BreadcrumbItem>
-                                <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                                <BreadcrumbPage>Spieler</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
