@@ -81,7 +81,7 @@ import RegelwerkCard from "@/components/dashboard/RegelwerkCard"
 
 export default function Dashboard() {
     return (
-        <div className="flex md:h-screen w-full flex-col bg-muted/40">
+        <div className="flex lg:h-screen w-full flex-col bg-muted/40">
             <div className="flex flex-col sm:gap-4 sm:pt-4 sm:pl-14 md:pt-8 h-full">
                 <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-8">
                     <MobileNavDrawer />
@@ -116,7 +116,7 @@ export default function Dashboard() {
                         <UserMenu />
                     </div>
                 </header>
-                <main className="flex flex-1 flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8 h-full">
+                <main className="flex flex-1 flex-col gap-4 px-4 pb-4 md:gap-8 md:px-8 md:pb-8 h-full w-full">
                     <div className="grid gap-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-7 lg:h-[60vh] xl:h-[60vh]">
                         <HeroSectionCard />
                         <div className="lg:col-span-1 xl:col-span-2 grid gap-4">
@@ -125,7 +125,7 @@ export default function Dashboard() {
                             <RegelwerkCard />
                         </div>
                     </div>
-                    <div className="grid gap-4 md:grid-cols-5 md:gap-8 flex-1">
+                    <div className="grid gap-4 xl:grid-cols-5 md:gap-8 flex-1">
                         <SpielplanCard />
                         <StatistikenCard />
                     </div>

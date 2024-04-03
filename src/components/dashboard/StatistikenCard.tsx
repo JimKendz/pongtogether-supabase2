@@ -6,7 +6,7 @@ export default function StatistikenCard() {
 
 
     return (
-        <Card className="md:col-span-2 flex flex-col justify-between">
+        <Card className="xl:col-span-2 flex flex-col justify-between">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                     Statistiken
@@ -22,10 +22,8 @@ export default function StatistikenCard() {
                         ... hat bisher am meisten getrunken
                     </p>
                 </div>
-               
-                <div className="flex justify-end align-bottom align-items-bottom content-end">
-                    <Button>Mehr Statistiken</Button>
-                </div>
+
+                <Button className="self-end">Mehr Statistiken</Button>
             </CardContent>
         </Card>
     )
