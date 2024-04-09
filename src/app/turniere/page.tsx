@@ -110,7 +110,7 @@ export default function Turniere() {
                                     </CardDescription>
                                 </CardHeader>
                                 <CardFooter>
-                                    <Button>Create New Order</Button>
+                                    <Link href="/dashboard">Dashboard</Link>
                                 </CardFooter>
                             </Card>
                             <Card>

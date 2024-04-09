@@ -18,17 +18,18 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation';
+import ThemeToggle from "./ThemeToggle";
 
 /* const NavLinks = [
-	{ id: 1, name: 'Home', path: '/' },
-	{ id: 2, name: 'Blog', path: '/blog' },
-	{ id: 3, name: 'About', path: '/about' },
+    { id: 1, name: 'Home', path: '/' },
+    { id: 2, name: 'Blog', path: '/blog' },
+    { id: 3, name: 'About', path: '/about' },
 ]; */
 
 export default function SideBar() {
     const pathname = usePathname();
     console.log("pathname = ", pathname)
-	const isActive = (path : String) => path === pathname;
+    const isActive = (path: String) => path === pathname;
 
     return (
         <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -45,7 +46,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="/"
-                                className={isActive("/") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <Home className="h-5 w-5" />
@@ -58,7 +59,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="turniere"
-                                className={isActive("/turniere") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/turniere") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <Trophy className="h-5 w-5" />
@@ -71,7 +72,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="/spieler"
-                                className={isActive("/spieler") || isActive("/profil") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/spieler") || isActive("/profil") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <User2 className="h-5 w-5" />
@@ -84,7 +85,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="/teams"
-                                className={isActive("/teams") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/teams") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <Users2 className="h-5 w-5" />
@@ -97,7 +98,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="/statistiken"
-                                className={isActive("/statistiken") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/statistiken") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <LineChart className="h-5 w-5" />
@@ -112,9 +113,19 @@ export default function SideBar() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
+                            <div
+                                className='flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'
+                            >
+                                <ThemeToggle />
+                            </div>
+                        </TooltipTrigger>
+                        <TooltipContent side="right">Light / dark mode</TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
                             <Link
                                 href="/benachrichtigungen"
-                                className={isActive("/benachrichtigungen") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/benachrichtigungen") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <Bell className="h-5 w-5" />
@@ -127,7 +138,7 @@ export default function SideBar() {
                         <TooltipTrigger asChild>
                             <Link
                                 href="/einstellungen"
-                                className={isActive("/einstellungen") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8' 
+                                className={isActive("/einstellungen") ? 'active flex h-9 w-9 items-center justify-center rounded-lg text-accent-foreground bg-accent transition-colors md:h-8 md:w-8'
                                     : 'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-accent-foreground hover:bg-accent md:h-8 md:w-8'}
                             >
                                 <Settings className="h-5 w-5" />
