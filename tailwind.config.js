@@ -15,6 +15,7 @@ module.exports = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
+        backgroundNav: 'hsl(var(--background-nav))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -35,6 +36,8 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+          logoBG: 'hsl(var(--logo-bg))',
+          navForeground: 'hsl(var(--accent-foreground-light-nav))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',

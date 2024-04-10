@@ -15,10 +15,12 @@ import {
     User2,
     Trophy,
     Bell,
+    Beer,
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation';
 import ThemeToggle from "./ThemeToggle";
+import Image from "next/image";
 
 /* const NavLinks = [
     { id: 1, name: 'Home', path: '/' },
@@ -32,16 +34,22 @@ export default function SideBar() {
     const isActive = (path: String) => path === pathname;
 
     return (
-        <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+        <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-backgroundNav dark:bg-card sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
-                <Link
-                    href="/"
-                    className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-                >
-                    <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
-                    <span className="sr-only">PongTogether</span>
-                </Link>
                 <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Link
+                                href="/"
+                                className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-accent-logoBG dark:bg-accent text-lg font-semibold text-primary-foreground dark:text-primary md:h-8 md:w-8 md:text-base"
+                            >
+                                {/* <Image src="/Logo_Dark.png" width={2000} height={2000} alt="PongTogether Logo" className="transition-all group-hover:scale-110" /> */}
+                                <Beer className="h-5 w-5 pl-[2px] transition-all group-hover:scale-110" />
+                                <span className="sr-only">PongTogether</span>
+                            </Link>
+                        </TooltipTrigger>
+                        <TooltipContent side="right">PongTogether</TooltipContent>
+                    </Tooltip>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link

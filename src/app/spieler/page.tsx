@@ -69,31 +69,12 @@ export default function Spieler() {
                     <MobileNavDrawer />
                     <Breadcrumb className="hidden md:flex">
                         <BreadcrumbList>
-                            {/* <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="#">Dashboard</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="/turniere">Turniere</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator /> */}
                             <BreadcrumbItem>
                                 <BreadcrumbPage>Spieler</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
-                    {/* <div className="relative ml-auto flex-1 md:grow-0">
-                        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                        <Input
-                            type="search"
-                            placeholder="Search..."
-                            className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-                        />
-                    </div> */}
+                    
                     <div className="relative ml-auto">
                         <UserMenu />
                     </div>
@@ -103,14 +84,14 @@ export default function Spieler() {
                         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
                             <Card className="sm:col-span-2">
                                 <CardHeader className="pb-3">
-                                    <CardTitle>Your Orders</CardTitle>
+                                    <CardTitle>Jim K.</CardTitle>
                                     <CardDescription className="max-w-lg text-balance leading-relaxed">
                                         Introducing Our Dynamic Orders Dashboard for Seamless
                                         Management and Insightful Analysis.
                                     </CardDescription>
                                 </CardHeader>
                                 <CardFooter>
-                                    <Button>Create New Order</Button>
+                                    <Button>Zu deinem Profil</Button>
                                 </CardFooter>
                             </Card>
                             <Card>

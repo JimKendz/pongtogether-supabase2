@@ -19,7 +19,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -110,7 +110,7 @@ export default function Turniere() {
                                     </CardDescription>
                                 </CardHeader>
                                 <CardFooter>
-                                    <Link href="/dashboard">Dashboard</Link>
+                                    <Link href="/dashboard" className={buttonVariants({ variant: "default" })}>Dashboard</Link>
                                 </CardFooter>
                             </Card>
                             <Card>

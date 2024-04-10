@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import { cookies } from 'next/headers'
 import { createServerClient } from '@/utils/supabase'
 import ThemeToggle from '@/components/ThemeToggle'
+import HeroBG from '@/components/HeroBG'
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -33,6 +34,7 @@ export default async function Index() {
       <div className="flex max-w-4xl flex-1 flex-col gap-20 px-3">
         <Header />
         <main className="flex flex-1 flex-col gap-6">
+          <HeroBG />
           <h2 className="mb-4 text-4xl font-bold">Next steps</h2>
           {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
         </main>
