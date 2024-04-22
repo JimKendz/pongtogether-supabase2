@@ -7,7 +7,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { CircleUser } from "lucide-react"
 import Link from 'next/link'
 import { cookies } from 'next/headers'
@@ -71,7 +71,7 @@ export default async function UserMenu() {
         : (
             <Link
                 href="/login"
-                className="bg-btn-background hover:bg-btn-background-hover flex rounded-md px-3 py-2 no-underline"
+                className={buttonVariants({ variant: "default" })}
             >
                 Login
             </Link>
