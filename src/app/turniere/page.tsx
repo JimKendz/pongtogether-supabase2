@@ -9,6 +9,9 @@ import {
     MoreVertical,
     Truck,
     CircleUser,
+    Users,
+    LineChart,
+    Swords,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -60,6 +63,7 @@ import {
 } from "@/components/ui/tabs"
 import MobileNavDrawer from "@/components/MobileNavDrawer"
 import UserMenu from "@/components/UserMenu"
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 
 export default function Turniere() {
     return (
@@ -113,7 +117,7 @@ export default function Turniere() {
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="h-7 gap-1 text-sm"
+                                                className="h-7 gap-1 text-sm bg-card"
                                             >
                                                 <ListFilter className="h-3.5 w-3.5" />
                                                 <span className="sr-only sm:not-sr-only">Filter</span>
@@ -177,14 +181,62 @@ export default function Turniere() {
                                                         0 / 100
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
+                                                        <Badge className="text-sm font-normal" variant="secondary">
                                                             Aktuell
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         02-11-2024
                                                     </TableCell>
-                                                    <TableCell className="text-right">0 / 100</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                                 <TableRow>
                                                     <TableCell>
@@ -194,14 +246,62 @@ export default function Turniere() {
                                                         100 / 100
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         18-11-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">100 / 100</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                                 <TableRow>
                                                     <TableCell>
@@ -211,14 +311,62 @@ export default function Turniere() {
                                                         80 / 80
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">80 / 80</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                                 <TableRow>
                                                     <TableCell>
@@ -228,14 +376,62 @@ export default function Turniere() {
                                                         64 / 64?
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">64 / 64?</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                             </TableBody>
                                         </Table>
@@ -264,7 +460,7 @@ export default function Turniere() {
                                                     <TableHead className="hidden md:table-cell">
                                                         Datum
                                                     </TableHead>
-                                                    <TableHead className="text-right">Teilnehmer</TableHead>
+                                                    <TableHead className="text-right">Links</TableHead>
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
@@ -276,14 +472,62 @@ export default function Turniere() {
                                                         0 / 100
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
+                                                        <Badge className="text-sm font-normal" variant="secondary">
                                                             Aktuell
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         02-11-2024
                                                     </TableCell>
-                                                    <TableCell className="text-right">0 / 100</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                             </TableBody>
                                         </Table>
@@ -324,14 +568,62 @@ export default function Turniere() {
                                                         100 / 100
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         18-11-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">100 / 100</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                                 <TableRow>
                                                     <TableCell>
@@ -341,14 +633,62 @@ export default function Turniere() {
                                                         80 / 80
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">80 / 80</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                                 <TableRow>
                                                     <TableCell>
@@ -358,14 +698,62 @@ export default function Turniere() {
                                                         64 / 64?
                                                     </TableCell>
                                                     <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
+                                                        <Badge className="text-sm font-normal" variant="outline">
                                                             Abgeschlossen
                                                         </Badge>
                                                     </TableCell>
                                                     <TableCell className="hidden md:table-cell">
                                                         XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">64 / 64?</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <TooltipProvider>
+                                                            <Link
+                                                                href="/dashboard"
+                                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                            >
+                                                                Dashboard
+                                                            </Link>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Swords className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Spielplan
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/dashboard"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Teams
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <Link
+                                                                        href="/statistiken"
+                                                                        className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
+                                                                    >
+                                                                        <LineChart className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                    </Link>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    Statistiken
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    </TableCell>
                                                 </TableRow>
                                             </TableBody>
                                         </Table>
