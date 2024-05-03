@@ -9,6 +9,12 @@ import {
     MoreVertical,
     Truck,
     CircleUser,
+    User,
+    User2,
+    Users2,
+    LineChart,
+    Swords,
+    Plus,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -19,7 +25,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -60,6 +66,7 @@ import {
 } from "@/components/ui/tabs"
 import MobileNavDrawer from "@/components/MobileNavDrawer"
 import UserMenu from "@/components/UserMenu"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function Teams() {
     return (
@@ -69,18 +76,6 @@ export default function Teams() {
                     <MobileNavDrawer />
                     <Breadcrumb className="hidden md:flex">
                         <BreadcrumbList>
-                            {/* <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="#">Dashboard</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="/turniere">Turniere</Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator /> */}
                             <BreadcrumbItem>
                                 <BreadcrumbPage>Teams</BreadcrumbPage>
                             </BreadcrumbItem>
@@ -100,54 +95,11 @@ export default function Teams() {
                 </header>
                 <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
                     <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-                        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-                            <Card className="sm:col-span-2">
-                                <CardHeader className="pb-3">
-                                    <CardTitle>Your Orders</CardTitle>
-                                    <CardDescription className="max-w-lg text-balance leading-relaxed">
-                                        Introducing Our Dynamic Orders Dashboard for Seamless
-                                        Management and Insightful Analysis.
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardFooter>
-                                    <Button>Create New Order</Button>
-                                </CardFooter>
-                            </Card>
-                            <Card>
-                                <CardHeader className="pb-2">
-                                    <CardDescription>This Week</CardDescription>
-                                    <CardTitle className="text-4xl">$1329</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-xs text-muted-foreground">
-                                        +25% from last week
-                                    </div>
-                                </CardContent>
-                                <CardFooter>
-                                    <Progress value={25} aria-label="25% increase" />
-                                </CardFooter>
-                            </Card>
-                            <Card>
-                                <CardHeader className="pb-2">
-                                    <CardDescription>This Month</CardDescription>
-                                    <CardTitle className="text-3xl">$5,329</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-xs text-muted-foreground">
-                                        +10% from last month
-                                    </div>
-                                </CardContent>
-                                <CardFooter>
-                                    <Progress value={12} aria-label="12% increase" />
-                                </CardFooter>
-                            </Card>
-                        </div>
-                        <Tabs defaultValue="week">
+                        <Tabs defaultValue="deine">
                             <div className="flex items-center">
                                 <TabsList>
-                                    <TabsTrigger value="week">Week</TabsTrigger>
-                                    <TabsTrigger value="month">Month</TabsTrigger>
-                                    <TabsTrigger value="year">Year</TabsTrigger>
+                                    <TabsTrigger value="deine">Deine</TabsTrigger>
+                                    <TabsTrigger value="alle">Alle</TabsTrigger>
                                 </TabsList>
                                 <div className="ml-auto flex items-center gap-2">
                                     <DropdownMenu>
@@ -155,221 +107,558 @@ export default function Teams() {
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="h-7 gap-1 text-sm"
+                                                className="h-7 gap-1 text-sm bg-card"
                                             >
                                                 <ListFilter className="h-3.5 w-3.5" />
                                                 <span className="sr-only sm:not-sr-only">Filter</span>
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                            <DropdownMenuLabel>Filter by</DropdownMenuLabel>
+                                            <DropdownMenuLabel>Filter nach</DropdownMenuLabel>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuCheckboxItem checked>
-                                                Fulfilled
+                                                Noch
                                             </DropdownMenuCheckboxItem>
                                             <DropdownMenuCheckboxItem>
-                                                Declined
+                                                Nicht
                                             </DropdownMenuCheckboxItem>
                                             <DropdownMenuCheckboxItem>
-                                                Refunded
+                                                Implementiert
                                             </DropdownMenuCheckboxItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
-                                    <Button
+                                    {/* <Button
                                         size="sm"
                                         variant="outline"
                                         className="h-7 gap-1 text-sm"
                                     >
                                         <File className="h-3.5 w-3.5" />
                                         <span className="sr-only sm:not-sr-only">Export</span>
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </div>
-                            <TabsContent value="week">
+                            <TabsContent value="deine">
                                 <Card>
-                                    <CardHeader className="px-7">
-                                        <CardTitle>Orders</CardTitle>
-                                        <CardDescription>
-                                            Recent orders from your store.
-                                        </CardDescription>
+                                    <CardHeader className="px-7 flex flex-row space-between w-full">
+                                        <div>
+                                            <CardTitle>Deine Teams</CardTitle>
+                                            <CardDescription className="mt-2">
+                                                Hier kannst du deine Teams verwalten.
+                                            </CardDescription>
+                                        </div>
+                                        <div className="ml-auto">
+                                            <Link
+                                                href="/dashboard"
+                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                            >
+                                                <Plus className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                Team erstellen
+                                            </Link>
+                                        </div>
                                     </CardHeader>
                                     <CardContent>
                                         <Table>
                                             <TableHeader>
                                                 <TableRow>
-                                                    <TableHead>Customer</TableHead>
+                                                    <TableHead>Teamname</TableHead>
                                                     <TableHead className="hidden sm:table-cell">
-                                                        Type
-                                                    </TableHead>
-                                                    <TableHead className="hidden sm:table-cell">
-                                                        Status
+                                                        Spieler
                                                     </TableHead>
                                                     <TableHead className="hidden md:table-cell">
-                                                        Date
+                                                        Wappen
                                                     </TableHead>
-                                                    <TableHead className="text-right">Amount</TableHead>
+                                                    <TableHead className="hidden lg:table-cell">
+                                                        Zuletzt aktiv
+                                                    </TableHead>
+                                                    <TableHead className="text-right">Links</TableHead>
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                <TableRow className="bg-accent">
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Liam Johnson</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            liam@example.com
+                                                        <div className="font-medium">Enua</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Marvin</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Sale
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            VF
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-23
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        18-11-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">$250.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
-                                                <TableRow>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Olivia Smith</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            olivia@example.com
+                                                        <div className="font-medium">Nasi Coseng</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Lando</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Refund
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
-                                                            Declined
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-24
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">$150.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
-                                                <TableRow>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Noah Williams</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            noah@example.com
+                                                        <div className="font-medium">Benjamin Bierchen</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Vincent</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Subscription
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #2
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            HF
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-25
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2021
                                                     </TableCell>
-                                                    <TableCell className="text-right">$350.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
-                                                <TableRow>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Emma Brown</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            emma@example.com
+                                                        <div className="font-medium">Zitzenfritzen</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Vinzenz</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Sale
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-26
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2019
                                                     </TableCell>
-                                                    <TableCell className="text-right">$450.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
+                                            </TableBody>
+                                        </Table>
+                                    </CardContent>
+                                </Card>
+                            </TabsContent>
+                            <TabsContent value="alle">
+                                <Card>
+                                    <CardHeader className="px-7 flex flex-row space-between w-full">
+                                        <div>
+                                            <CardTitle>Alle Teams</CardTitle>
+                                            <CardDescription className="mt-2">
+                                                Hier siehst du alle registrierten Teams.
+                                            </CardDescription>
+                                        </div>
+                                        <div className="ml-auto">
+                                            <Link
+                                                href="/dashboard"
+                                                className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                            >
+                                                <Plus className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                Team erstellen
+                                            </Link>
+                                        </div>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <Table>
+                                            <TableHeader>
                                                 <TableRow>
-                                                    <TableCell>
-                                                        <div className="font-medium">Liam Johnson</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            liam@example.com
-                                                        </div>
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Sale
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
-                                                        </Badge>
-                                                    </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-23
-                                                    </TableCell>
-                                                    <TableCell className="text-right">$250.00</TableCell>
+                                                    <TableHead>Teamname</TableHead>
+                                                    <TableHead className="hidden sm:table-cell">
+                                                        Spieler
+                                                    </TableHead>
+                                                    <TableHead className="hidden md:table-cell">
+                                                        Wappen
+                                                    </TableHead>
+                                                    <TableHead className="hidden lg:table-cell">
+                                                        Zuletzt aktiv
+                                                    </TableHead>
+                                                    <TableHead className="text-right">Links</TableHead>
                                                 </TableRow>
-                                                <TableRow>
+                                            </TableHeader>
+                                            <TableBody>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Liam Johnson</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            liam@example.com
+                                                        <div className="font-medium">Enua</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Marvin</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Sale
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            VF
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-23
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        18-11-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">$250.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
-                                                <TableRow>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Olivia Smith</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            olivia@example.com
+                                                        <div className="font-medium">Nasi Coseng</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Lando</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Refund
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="outline">
-                                                            Declined
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-24
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2023
                                                     </TableCell>
-                                                    <TableCell className="text-right">$150.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
-                                                <TableRow>
+                                                <TableRow className="hover:cursor-pointer">
                                                     <TableCell>
-                                                        <div className="font-medium">Emma Brown</div>
-                                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                                            emma@example.com
+                                                        <div className="font-medium">Benjamin Bierchen</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Vincent</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
                                                         </div>
                                                     </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        Sale
-                                                    </TableCell>
-                                                    <TableCell className="hidden sm:table-cell">
-                                                        <Badge className="text-xs" variant="secondary">
-                                                            Fulfilled
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #2
+                                                        </Badge>
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            HF
                                                         </Badge>
                                                     </TableCell>
-                                                    <TableCell className="hidden md:table-cell">
-                                                        2023-06-26
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2021
                                                     </TableCell>
-                                                    <TableCell className="text-right">$450.00</TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
+                                                </TableRow>
+                                                <TableRow className="hover:cursor-pointer">
+                                                    <TableCell>
+                                                        <div className="font-medium">Zitzenfritzen</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Vinzenz</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Jim</p>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2019
+                                                    </TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
+                                                </TableRow>
+                                                <TableRow className="hover:cursor-pointer">
+                                                    <TableCell>
+                                                        <div className="font-medium">Pizza LK</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">David</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Alicia</p>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #2
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2023
+                                                    </TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
+                                                </TableRow>
+                                                <TableRow className="hover:cursor-pointer">
+                                                    <TableCell>
+                                                        <div className="font-medium">Balls and Tits</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Vincent</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Lina</p>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        18-11-2023
+                                                    </TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
+                                                </TableRow>
+                                                <TableRow className="hover:cursor-pointer">
+                                                    <TableCell>
+                                                        <div className="font-medium">Zen Pong</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Heiner</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Marius</p>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #3
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2023
+                                                    </TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
+                                                </TableRow>
+                                                <TableRow className="hover:cursor-pointer">
+                                                    <TableCell>
+                                                        <div className="font-medium">Mahatma Gönndir</div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden sm:table-cell">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Max</p>
+                                                            </div>
+                                                            <div className="flex flex-row items-center">
+                                                                <User2 className="h-4 w-4 mb-[1px]" />
+                                                                <p className="ml-1">Nico</p>
+                                                            </div>
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell className="hidden md:table-cell">
+                                                        <Badge className="text-sm font-normal" variant="outline">
+                                                            #1
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="hidden lg:table-cell">
+                                                        XX-XX-2022
+                                                    </TableCell>
+                                                    <TableCell className="flex gap-2 justify-end align-middle">
+                                                        <Link
+                                                            href="/dashboard"
+                                                            className={buttonVariants({ variant: "default", size: "lg", className: "group flex h-10 items-center justify-center px-[12px]" })}
+                                                        >
+                                                            <Users2 className="h-5 w-5 transition-all group-hover:scale-110 mr-2" />
+                                                            Teamprofil
+                                                        </Link>
+                                                    </TableCell>
                                                 </TableRow>
                                             </TableBody>
                                         </Table>
@@ -378,28 +667,31 @@ export default function Teams() {
                             </TabsContent>
                         </Tabs>
                     </div>
-                    <div>
-                        <Card className="overflow-hidden">
+                    <div className="grid lg:col-span-1 relative h-full w-full">
+                        <Card className="lg:fixed lg:col-span-1 flex flex-col">
                             <CardHeader className="flex flex-row items-start bg-muted/50">
-                                <div className="grid gap-0.5">
-                                    <CardTitle className="group flex items-center gap-2 text-lg">
-                                        Order ID: Oe31b70H
-                                        <Button
-                                            size="icon"
-                                            variant="outline"
-                                            className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
-                                        >
-                                            <Copy className="h-3 w-3" />
-                                            <span className="sr-only">Copy Order ID</span>
-                                        </Button>
+                                <div className="grid gap-0.5 mr-12">
+                                    <CardTitle className="group flex items-center gap-2 text-2xl">
+                                        Enua
                                     </CardTitle>
-                                    <CardDescription>Date: November 23, 2023</CardDescription>
+                                    <CardDescription>
+                                        <div className="flex flex-row gap-4">
+                                            <div className="flex flex-row">
+                                                <User2 className="h-5 w-5" />
+                                                <p className="ml-1">Marvin</p>
+                                            </div>
+                                            <div className="flex flex-row">
+                                                <User2 className="h-5 w-5" />
+                                                <p className="ml-1">Jim</p>
+                                            </div>
+                                        </ div>
+                                    </CardDescription>
                                 </div>
                                 <div className="ml-auto flex items-center gap-1">
                                     <Button size="sm" variant="outline" className="h-8 gap-1">
-                                        <Truck className="h-3.5 w-3.5" />
+                                        <Users2 className="h-3.5 w-3.5" />
                                         <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
-                                            Track Order
+                                            Teamprofil
                                         </span>
                                     </Button>
                                     <DropdownMenu>
@@ -410,125 +702,79 @@ export default function Teams() {
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                                            <DropdownMenuItem>Export</DropdownMenuItem>
+                                            <DropdownMenuItem>Not</DropdownMenuItem>
+                                            <DropdownMenuItem>yet</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem>Trash</DropdownMenuItem>
+                                            <DropdownMenuItem>implemented</DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </div>
                             </CardHeader>
                             <CardContent className="p-6 text-sm">
                                 <div className="grid gap-3">
-                                    <div className="font-semibold">Order Details</div>
+                                    <div className="font-semibold">Team Details</div>
                                     <ul className="grid gap-3">
                                         <li className="flex items-center justify-between">
                                             <span className="text-muted-foreground">
-                                                Glimmer Lamps x <span>2</span>
+                                                Turniere gespielt:
                                             </span>
-                                            <span>$250.00</span>
+                                            <span>2</span>
                                         </li>
                                         <li className="flex items-center justify-between">
                                             <span className="text-muted-foreground">
-                                                Aqua Filters x <span>1</span>
+                                                Spiele gespielt:
                                             </span>
-                                            <span>$49.00</span>
-                                        </li>
-                                    </ul>
-                                    <Separator className="my-2" />
-                                    <ul className="grid gap-3">
-                                        <li className="flex items-center justify-between">
-                                            <span className="text-muted-foreground">Subtotal</span>
-                                            <span>$299.00</span>
-                                        </li>
-                                        <li className="flex items-center justify-between">
-                                            <span className="text-muted-foreground">Shipping</span>
-                                            <span>$5.00</span>
-                                        </li>
-                                        <li className="flex items-center justify-between">
-                                            <span className="text-muted-foreground">Tax</span>
-                                            <span>$25.00</span>
-                                        </li>
-                                        <li className="flex items-center justify-between font-semibold">
-                                            <span className="text-muted-foreground">Total</span>
-                                            <span>$329.00</span>
+                                            <span>12</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <Separator className="my-4" />
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="grid gap-3">
-                                        <div className="font-semibold">Shipping Information</div>
-                                        <address className="grid gap-0.5 not-italic text-muted-foreground">
-                                            <span>Liam Johnson</span>
-                                            <span>1234 Main St.</span>
-                                            <span>Anytown, CA 12345</span>
-                                        </address>
+                                        <div className="font-semibold">Spieler</div>
+                                        <div className="flex flex-row">
+                                            <User2 className="h-5 w-5" />
+                                            <p className="ml-1">Marvin</p>
+                                        </div>
+                                        <div className="flex flex-row">
+                                            <User2 className="h-5 w-5" />
+                                            <p className="ml-1">Jim</p>
+                                        </div>
                                     </div>
                                     <div className="grid auto-rows-max gap-3">
-                                        <div className="font-semibold">Billing Information</div>
-                                        <div className="text-muted-foreground">
-                                            Same as shipping address
+                                        <div className="font-semibold">Wappen</div>
+                                        <div className="text-muted-foreground flex flex-row gap-1">
+                                            <Badge variant="default">
+                                                #1
+                                            </Badge>
+                                            <Badge variant="default">
+                                                #1
+                                            </Badge>
+                                            <Badge variant="default">
+                                                VF
+                                            </Badge>
                                         </div>
                                     </div>
                                 </div>
                                 <Separator className="my-4" />
                                 <div className="grid gap-3">
-                                    <div className="font-semibold">Customer Information</div>
+                                    <div className="font-semibold">Turnierhistorie</div>
                                     <dl className="grid gap-3">
                                         <div className="flex items-center justify-between">
-                                            <dt className="text-muted-foreground">Customer</dt>
-                                            <dd>Liam Johnson</dd>
+                                            <dt className="">PongTogether Winter Cup</dt>
+                                            <dd className="text-muted-foreground">VF</dd>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <dt className="text-muted-foreground">Email</dt>
-                                            <dd>
-                                                <a href="mailto:">liam@acme.com</a>
-                                            </dd>
+                                            <dt className="">PongTogether Summer Cup</dt>
+                                            <dd className="text-muted-foreground">#1</dd>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <dt className="text-muted-foreground">Phone</dt>
-                                            <dd>
-                                                <a href="tel:">+1 234 567 890</a>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                                <Separator className="my-4" />
-                                <div className="grid gap-3">
-                                    <div className="font-semibold">Payment Information</div>
-                                    <dl className="grid gap-3">
-                                        <div className="flex items-center justify-between">
-                                            <dt className="flex items-center gap-1 text-muted-foreground">
-                                                <CreditCard className="h-4 w-4" />
-                                                Visa
-                                            </dt>
-                                            <dd>**** **** **** 4532</dd>
+                                            <dt className="">WePong Turnier 2015</dt>
+                                            <dd className="text-muted-foreground">#1</dd>
                                         </div>
                                     </dl>
                                 </div>
                             </CardContent>
-                            <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-                                <div className="text-xs text-muted-foreground">
-                                    Updated <time dateTime="2023-11-23">November 23, 2023</time>
-                                </div>
-                                <Pagination className="ml-auto mr-0 w-auto">
-                                    <PaginationContent>
-                                        <PaginationItem>
-                                            <Button size="icon" variant="outline" className="h-6 w-6">
-                                                <ChevronLeft className="h-3.5 w-3.5" />
-                                                <span className="sr-only">Previous Order</span>
-                                            </Button>
-                                        </PaginationItem>
-                                        <PaginationItem>
-                                            <Button size="icon" variant="outline" className="h-6 w-6">
-                                                <ChevronRight className="h-3.5 w-3.5" />
-                                                <span className="sr-only">Next Order</span>
-                                            </Button>
-                                        </PaginationItem>
-                                    </PaginationContent>
-                                </Pagination>
-                            </CardFooter>
                         </Card>
                     </div>
                 </main>

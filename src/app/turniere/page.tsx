@@ -9,7 +9,7 @@ import {
     MoreVertical,
     Truck,
     CircleUser,
-    Users,
+    Users2,
     LineChart,
     Swords,
 } from "lucide-react"
@@ -216,7 +216,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -285,7 +285,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -354,7 +354,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -423,7 +423,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -523,7 +523,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -623,7 +623,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -692,7 +692,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
@@ -761,7 +761,7 @@ export default function Turniere() {
                                                                             href="/dashboard"
                                                                             className={buttonVariants({ variant: "default", size: "icon", className: "group flex h-10 w-10 items-center justify-center" })}
                                                                         >
-                                                                            <Users className="h-6 w-6 transition-all group-hover:scale-110" />
+                                                                            <Users2 className="h-6 w-6 transition-all group-hover:scale-110" />
                                                                         </Link>
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
