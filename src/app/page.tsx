@@ -9,6 +9,7 @@ import HeroBG from '@/components/HeroBG'
 import MobileNavDrawer from '@/components/MobileNavDrawer'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from '@/components/ui/breadcrumb'
 import UserMenu from '@/components/UserMenu'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -27,126 +28,131 @@ export default async function Index() {
   const isSupabaseConnected = canInitSupabaseClient()
 
   return (
+    <ScrollArea>
     <div className="flex w-full flex-1 flex-col">
-      <header className="sticky top-0 z-30 flex p-4 h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-        <MobileNavDrawer />
+      <div className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
+        
+          <header className="sticky top-0 z-30 flex p-4 h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+            <MobileNavDrawer />
 
-        <div className="relative ml-auto">
-          <UserMenu />
-        </div>
-      </header>
-      {/* <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">
-        <div className="flex w-full max-w-4xl items-center justify-between p-3 text-sm">
-          {isSupabaseConnected && <AuthButton />}
-        </div>
-      </nav> */}
+            <div className="relative ml-auto">
+              <UserMenu />
+            </div>
+          </header>
+          {/* <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">
+            <div className="flex w-full max-w-4xl items-center justify-between p-3 text-sm">
+              {isSupabaseConnected && <AuthButton />}
+            </div>
+          </nav> */}
 
-      <div className="flex w-full flex-1 flex-col items-center">
+          <div className="flex w-full flex-1 flex-col items-center">
 
-        <div>
-          <HeroBG />
-        </div>
+            <div>
+              <HeroBG />
+            </div>
 
-        <div className="flex max-w-4xl flex-1 flex-col gap-6 px-3">
-          <Header />
-          <main className="flex flex-1 flex-col gap-6">
-            <section
-              id="features"
-              className="container space-y-12 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
-            >
-              <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-6 text-center">
-                <h2 className="font-bold text-4xl leading-[1.1] sm:text-3xl md:text-6xl">
-                  Features
-                </h2>
-                <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                  Diese Web-App versorgt euch mit allen nötigen Informationen und Funktionen vor und während unserer PongTogether Turniere!
-                </p>
-              </div>
-              <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2.75C8 2.47386 7.77614 2.25 7.5 2.25C7.22386 2.25 7 2.47386 7 2.75V7H2.75C2.47386 7 2.25 7.22386 2.25 7.5C2.25 7.77614 2.47386 8 2.75 8H7V12.25C7 12.5261 7.22386 12.75 7.5 12.75C7.77614 12.75 8 12.5261 8 12.25V8H12.25C12.5261 8 12.75 7.77614 12.75 7.5C12.75 7.22386 12.5261 7 12.25 7H8V2.75Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
-                    <div className="space-y-2">
-                      <h3 className="font-bold">Infos</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Wann, wie, wo? Wer ist alles dabei und wie kann ich mich anmelden?
-                      </p>
+            <div className="flex max-w-4xl flex-1 flex-col gap-6 px-3">
+              <Header />
+              <main className="flex flex-1 flex-col gap-6">
+                <section
+                  id="features"
+                  className="container space-y-12 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
+                >
+                  <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-6 text-center">
+                    <h2 className="font-bold text-4xl leading-[1.1] sm:text-3xl md:text-6xl">
+                      Features
+                    </h2>
+                    <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+                      Diese Web-App versorgt euch mit allen nötigen Informationen und Funktionen vor und während unserer PongTogether Turniere!
+                    </p>
+                  </div>
+                  <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2.75C8 2.47386 7.77614 2.25 7.5 2.25C7.22386 2.25 7 2.47386 7 2.75V7H2.75C2.47386 7 2.25 7.22386 2.25 7.5C2.25 7.77614 2.47386 8 2.75 8H7V12.25C7 12.5261 7.22386 12.75 7.5 12.75C7.77614 12.75 8 12.5261 8 12.25V8H12.25C12.5261 8 12.75 7.77614 12.75 7.5C12.75 7.22386 12.5261 7 12.25 7H8V2.75Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
+                        <div className="space-y-2">
+                          <h3 className="font-bold">Infos</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Wann, wie, wo? Wer ist alles dabei und wie kann ich mich anmelden?
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
+                        <div className="space-y-2">
+                          <h3 className="font-bold">Anmeldung und Teams</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Wähle oder erstelle ein Team und melde dich fürs nächste Turnier an!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 2.5C3 2.22386 3.22386 2 3.5 2H9.08579C9.21839 2 9.34557 2.05268 9.43934 2.14645L11.8536 4.56066C11.9473 4.65443 12 4.78161 12 4.91421V12.5C12 12.7761 11.7761 13 11.5 13H3.5C3.22386 13 3 12.7761 3 12.5V2.5ZM3.5 1C2.67157 1 2 1.67157 2 2.5V12.5C2 13.3284 2.67157 14 3.5 14H11.5C12.3284 14 13 13.3284 13 12.5V4.91421C13 4.51639 12.842 4.13486 12.5607 3.85355L10.1464 1.43934C9.86514 1.15804 9.48361 1 9.08579 1H3.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5C4 4.77614 4.22386 5 4.5 5H7.5C7.77614 5 8 4.77614 8 4.5C8 4.22386 7.77614 4 7.5 4H4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H10.5C10.7761 8 11 7.77614 11 7.5C11 7.22386 10.7761 7 10.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H10.5C10.7761 11 11 10.7761 11 10.5C11 10.2239 10.7761 10 10.5 10H4.5Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>              <div className="space-y-2">
+                          <h3 className="font-bold">Turnierbaum</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Ob Gruppen- oder KO-Phase, hier erfährst du wer gegen wen antritt.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.69667 0.0403541C8.90859 0.131038 9.03106 0.354857 8.99316 0.582235L8.0902 6.00001H12.5C12.6893 6.00001 12.8625 6.10701 12.9472 6.27641C13.0319 6.4458 13.0136 6.6485 12.8999 6.80001L6.89997 14.8C6.76167 14.9844 6.51521 15.0503 6.30328 14.9597C6.09135 14.869 5.96888 14.6452 6.00678 14.4178L6.90974 9H2.49999C2.31061 9 2.13748 8.893 2.05278 8.72361C1.96809 8.55422 1.98636 8.35151 2.09999 8.2L8.09997 0.200038C8.23828 0.0156255 8.48474 -0.0503301 8.69667 0.0403541ZM3.49999 8.00001H7.49997C7.64695 8.00001 7.78648 8.06467 7.88148 8.17682C7.97648 8.28896 8.01733 8.43723 7.99317 8.5822L7.33027 12.5596L11.5 7.00001H7.49997C7.353 7.00001 7.21347 6.93534 7.11846 6.8232C7.02346 6.71105 6.98261 6.56279 7.00678 6.41781L7.66968 2.44042L3.49999 8.00001Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
+                        <div className="space-y-2">
+                          <h3 className="font-bold">Ergebnisse eintragen</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Trage deine Ergebnisse bequem über diese Seite ein.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>              <div className="space-y-2">
+                          <h3 className="font-bold">Statistiken</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Schau, wie du und die anderen Teams abschneiden.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+                      <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
+                        <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 5.25C1.91421 5.25 2.25 4.91421 2.25 4.5C2.25 4.08579 1.91421 3.75 1.5 3.75C1.08579 3.75 0.75 4.08579 0.75 4.5C0.75 4.91421 1.08579 5.25 1.5 5.25ZM4 4.5C4 4.22386 4.22386 4 4.5 4H13.5C13.7761 4 14 4.22386 14 4.5C14 4.77614 13.7761 5 13.5 5H4.5C4.22386 5 4 4.77614 4 4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H13.5C13.7761 8 14 7.77614 14 7.5C14 7.22386 13.7761 7 13.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H13.5C13.7761 11 14 10.7761 14 10.5C14 10.2239 13.7761 10 13.5 10H4.5ZM2.25 7.5C2.25 7.91421 1.91421 8.25 1.5 8.25C1.08579 8.25 0.75 7.91421 0.75 7.5C0.75 7.08579 1.08579 6.75 1.5 6.75C1.91421 6.75 2.25 7.08579 2.25 7.5ZM1.5 11.25C1.91421 11.25 2.25 10.9142 2.25 10.5C2.25 10.0858 1.91421 9.75 1.5 9.75C1.08579 9.75 0.75 10.0858 0.75 10.5C0.75 10.9142 1.08579 11.25 1.5 11.25Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
+                        <div className="space-y-2">
+                          <h3 className="font-bold">Archiv</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Wie liefen die letzten Turniere?
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
-                    <div className="space-y-2">
-                      <h3 className="font-bold">Anmeldung und Teams</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Wähle oder erstelle ein Team und melde dich fürs nächste Turnier an!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 2.5C3 2.22386 3.22386 2 3.5 2H9.08579C9.21839 2 9.34557 2.05268 9.43934 2.14645L11.8536 4.56066C11.9473 4.65443 12 4.78161 12 4.91421V12.5C12 12.7761 11.7761 13 11.5 13H3.5C3.22386 13 3 12.7761 3 12.5V2.5ZM3.5 1C2.67157 1 2 1.67157 2 2.5V12.5C2 13.3284 2.67157 14 3.5 14H11.5C12.3284 14 13 13.3284 13 12.5V4.91421C13 4.51639 12.842 4.13486 12.5607 3.85355L10.1464 1.43934C9.86514 1.15804 9.48361 1 9.08579 1H3.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5C4 4.77614 4.22386 5 4.5 5H7.5C7.77614 5 8 4.77614 8 4.5C8 4.22386 7.77614 4 7.5 4H4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H10.5C10.7761 8 11 7.77614 11 7.5C11 7.22386 10.7761 7 10.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H10.5C10.7761 11 11 10.7761 11 10.5C11 10.2239 10.7761 10 10.5 10H4.5Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>              <div className="space-y-2">
-                      <h3 className="font-bold">Turnierbaum</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Ob Gruppen- oder KO-Phase, hier erfährst du wer gegen wen antritt.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.69667 0.0403541C8.90859 0.131038 9.03106 0.354857 8.99316 0.582235L8.0902 6.00001H12.5C12.6893 6.00001 12.8625 6.10701 12.9472 6.27641C13.0319 6.4458 13.0136 6.6485 12.8999 6.80001L6.89997 14.8C6.76167 14.9844 6.51521 15.0503 6.30328 14.9597C6.09135 14.869 5.96888 14.6452 6.00678 14.4178L6.90974 9H2.49999C2.31061 9 2.13748 8.893 2.05278 8.72361C1.96809 8.55422 1.98636 8.35151 2.09999 8.2L8.09997 0.200038C8.23828 0.0156255 8.48474 -0.0503301 8.69667 0.0403541ZM3.49999 8.00001H7.49997C7.64695 8.00001 7.78648 8.06467 7.88148 8.17682C7.97648 8.28896 8.01733 8.43723 7.99317 8.5822L7.33027 12.5596L11.5 7.00001H7.49997C7.353 7.00001 7.21347 6.93534 7.11846 6.8232C7.02346 6.71105 6.98261 6.56279 7.00678 6.41781L7.66968 2.44042L3.49999 8.00001Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
-                    <div className="space-y-2">
-                      <h3 className="font-bold">Ergebnisse eintragen</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Trage deine Ergebnisse bequem über diese Seite ein.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>              <div className="space-y-2">
-                      <h3 className="font-bold">Statistiken</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Schau, wie du und die anderen Teams abschneiden.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                  <div className="flex h-[240px] flex-col justify-between rounded-md p-6">
-                    <svg width="50" height="50" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 5.25C1.91421 5.25 2.25 4.91421 2.25 4.5C2.25 4.08579 1.91421 3.75 1.5 3.75C1.08579 3.75 0.75 4.08579 0.75 4.5C0.75 4.91421 1.08579 5.25 1.5 5.25ZM4 4.5C4 4.22386 4.22386 4 4.5 4H13.5C13.7761 4 14 4.22386 14 4.5C14 4.77614 13.7761 5 13.5 5H4.5C4.22386 5 4 4.77614 4 4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H13.5C13.7761 8 14 7.77614 14 7.5C14 7.22386 13.7761 7 13.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H13.5C13.7761 11 14 10.7761 14 10.5C14 10.2239 13.7761 10 13.5 10H4.5ZM2.25 7.5C2.25 7.91421 1.91421 8.25 1.5 8.25C1.08579 8.25 0.75 7.91421 0.75 7.5C0.75 7.08579 1.08579 6.75 1.5 6.75C1.91421 6.75 2.25 7.08579 2.25 7.5ZM1.5 11.25C1.91421 11.25 2.25 10.9142 2.25 10.5C2.25 10.0858 1.91421 9.75 1.5 9.75C1.08579 9.75 0.75 10.0858 0.75 10.5C0.75 10.9142 1.08579 11.25 1.5 11.25Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" data-darkreader-inline-fill=""></path></svg>
-                    <div className="space-y-2">
-                      <h3 className="font-bold">Archiv</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Wie liefen die letzten Turniere?
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            {/* {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />} */}
-          </main>
-        </div>
+                </section>
+                {/* {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />} */}
+              </main>
+            </div>
 
-        <footer className="w-full justify-center border-t border-t-foreground/10 p-5 text-center text-xs">
-          <p className="">
-            Powered by{' '}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              PongTogether
-            </a>
-          </p>
-        </footer>
+            <footer className="w-full justify-center border-t border-t-foreground/10 p-5 text-center text-xs">
+              <p className="">
+                Powered by{' '}
+                <a
+                  href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
+                  target="_blank"
+                  className="font-bold hover:underline"
+                  rel="noreferrer"
+                >
+                  PongTogether
+                </a>
+              </p>
+            </footer>
+          </div>
       </div>
     </div>
+    </ScrollArea>
   )
 }
